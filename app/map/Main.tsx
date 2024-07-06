@@ -8,14 +8,14 @@ export default function Main({habitatData}: {habitatData: habitatEntry[]}) {
     const [groundLevelCheck, setGroundLevelCheck] = useState(false);
     const [groundTypeCheck, setGroundTypeCheck] = useState(false);
     const [birdMigrationCheck, setBirdMigrationCheck] = useState(false);
-    const [habitatsCheck, setHabitatsCheck] = useState(false);
+    const [habitatsCheck, setHabitatsCheck] = useState(true);
     const [coralReefsCheck, setCoralReefsCheck] = useState(false);
 
     return (
         <div className="drawer lg:drawer-open drawer-end">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
-                <GoogleMapComponent habitatData={habitatData} />
+                <GoogleMapComponent habitatData={habitatData} showHabitats={habitatsCheck} />
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>

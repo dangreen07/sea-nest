@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, HeatmapLayer, Marker } from '@react-google-maps/api';
 import { habitatEntry } from '@/server/data';
 
@@ -20,7 +20,9 @@ const UK_BOUNDS = {
   east: 2.6881
 };
 
-const GoogleMapComponent = ({habitatData}: {habitatData: habitatEntry[]}) => {
+export default function GoogleMapComponent({habitatData, showHabitats}: {habitatData: habitatEntry[], showHabitats: boolean}) {
+  const [heatmapData, setHeatMapData] = useState<any[]>([]);
+
   return (
     <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY??""}>
       <GoogleMap
@@ -34,7 +36,7 @@ const GoogleMapComponent = ({habitatData}: {habitatData: habitatEntry[]}) => {
           }
         }}
       >
-        {habitatData.map((current) => {
+        {showHabitats && habitatData.map((current) => {
           return (
             <Marker position={{lat: current.latitude, lng: current.longitude}} />
           )
@@ -43,5 +45,3 @@ const GoogleMapComponent = ({habitatData}: {habitatData: habitatEntry[]}) => {
     </LoadScript>
   );
 };
-
-export default GoogleMapComponent;
