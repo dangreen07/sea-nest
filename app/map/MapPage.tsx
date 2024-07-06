@@ -44,9 +44,9 @@ export default function GoogleMapComponent({habitatData, showHabitats, heatmapIn
           }
         }}
       >
-        {showHabitats && habitatData.map((current) => {
+        {showHabitats && habitatData.map((current, index) => {
           return (
-            <Marker position={{lat: current.latitude, lng: current.longitude}} />
+            <Marker key={index} position={{lat: current.latitude, lng: current.longitude}} />
           )
         })}
         {heatmap}
