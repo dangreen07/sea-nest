@@ -9,6 +9,17 @@ interface groundTypeEntry {
   type: string
 }
 
+interface groundLevelEntry {
+  x: number,
+  y: number,
+  w: number
+}
+
+export interface habitatEntry {
+  latitude: number,
+  longitude: number
+}
+
 /**
  * Retrieves ground type entries from a JSON file.
  * @returns A promise that resolves to an array of ground type entries.
@@ -30,4 +41,19 @@ export async function getGroundTypeEntries(): Promise<groundTypeEntry[]> {
 
   // Return the output
   return output;
+}
+
+/**
+ * Retrieves the ground level entries from a JSON file.
+ * @returns {Promise<groundLevelEntry[]>} A promise that resolves to an array of ground level entries.
+ */
+export async function getGroundLevelEntries() {
+  const data: groundLevelEntry[] = JSON.parse(fs.readFileSync('./data/groundLevels.json', 'utf8'));
+  return data;
+}
+
+export async function getHabitatEntries() {
+  const data: habitatEntry[] = JSON.parse(fs.readFileSync('./data/habitats.json', 'utf8'));
+  console.log(data)
+  return data;
 }
