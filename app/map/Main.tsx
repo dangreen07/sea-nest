@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import GoogleMapComponent from "./MapPage";
 import Checkbox from "@/components/Checkbox";
-import { habitatEntry } from "@/server/data";
+import { groundLevelEntry, habitatEntry } from "@/server/data";
 
-export default function Main({habitatData}: {habitatData: habitatEntry[]}) {
+export default function Main({habitatData, heatmapData}: {habitatData: habitatEntry[], heatmapData: groundLevelEntry[]}) {
     const [groundLevelCheck, setGroundLevelCheck] = useState(false);
     const [groundTypeCheck, setGroundTypeCheck] = useState(false);
     const [birdMigrationCheck, setBirdMigrationCheck] = useState(false);
@@ -15,7 +15,7 @@ export default function Main({habitatData}: {habitatData: habitatEntry[]}) {
         <div className="drawer lg:drawer-open drawer-end">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
-                <GoogleMapComponent habitatData={habitatData} showHabitats={habitatsCheck} />
+                <GoogleMapComponent habitatData={habitatData} showHabitats={habitatsCheck} heatmapInitialData={heatmapData} />
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>

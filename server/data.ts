@@ -9,7 +9,7 @@ interface groundTypeEntry {
   type: string
 }
 
-interface groundLevelEntry {
+export interface groundLevelEntry {
   x: number,
   y: number,
   w: number

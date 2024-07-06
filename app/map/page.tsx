@@ -8,7 +8,7 @@ export default async function Page() {
 
     return (
         <div className="h-screen">
-            <Main habitatData={habitatData} />
+            <Main habitatData={habitatData} heatmapData={groundLevelData} />
         </div>
     )
 }
