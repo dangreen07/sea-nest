@@ -22,14 +22,6 @@ const UK_BOUNDS = {
 };
 
 export default function GoogleMapComponent({habitatData, showHabitats, heatmapInitialData}: {habitatData: habitatEntry[], showHabitats: boolean, heatmapInitialData: groundLevelEntry[]}) {
-  const [heatmapData, setHeatMapData] = useState<any[]>([]);
-  const [heatmap, setHeatMap] = useState(<></>);
-
-  useEffect(() => {
-    setHeatMap(<HeatmapLayer data={heatmapInitialData.map((current) => {
-      return {location: new window.google.maps.LatLng(current.y, current.x), weight: current.w}
-    })} />)
-  }, []);
 
   return (
     <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY??""} libraries={["visualization"]}>
@@ -49,7 +41,6 @@ export default function GoogleMapComponent({habitatData, showHabitats, heatmapIn
             <Marker key={index} position={{lat: current.latitude, lng: current.longitude}} />
           )
         })}
-        {heatmap}
       </GoogleMap>
     </LoadScript>
   );
